@@ -36,7 +36,7 @@ main {
 .game-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #f5f5f5;
   width: 520px;
@@ -55,7 +55,6 @@ main {
   justify-content: center;
   align-items: center;
   font-size: 30px;
-  font-weight: 700;
   font-family: 'Karla', sans-serif;
   height: 63px;
   width: 63px;
@@ -68,14 +67,12 @@ main {
 }
 
 .roll-btn {
-  /* margin-top: 30px; */
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   background-color: #5035ff;
   font-size: 23px;
-  font-weight: 700;
   width: 150px;
   height: 60px;
   border-radius: 5px;
@@ -90,7 +87,6 @@ main {
   background-color: #4029d8;
   transform: translateY(1px);
 }
-
 .roll-btn,
 .box {
   -moz-user-select: none;
@@ -98,4 +94,18 @@ main {
   -ms-user-select: none;
   user-select: none;
   -o-user-select: none;
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+.instruction {
+  font-size: 1.2rem;
+  max-width: 80%;
+  font-family: 'Inter';
+  line-height: 25px;
+  letter-spacing: -0.03em;
+  text-align: center;
 }
