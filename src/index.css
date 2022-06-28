@@ -57,12 +57,14 @@ main {
   font-size: 30px;
   font-weight: 700;
   font-family: 'Karla', sans-serif;
-  background-color: white;
   height: 63px;
   width: 63px;
   box-shadow: 0px 2px 2px 0px #00000026;
   border-radius: 4px;
   cursor: pointer;
+}
+.box.held {
+  background-color: #59e391;
 }
 
 .roll-btn {
@@ -79,11 +81,6 @@ main {
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 3.1999998092651367px 7.679999828338623px 0px #0000002e;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -o-user-select: none;
 }
 .roll-btn:focus {
   outline: none;
@@ -92,4 +89,13 @@ main {
   box-shadow: inset 26px 35px 25px -4px rgba(0, 0, 0, 0.1);
   background-color: #4029d8;
   transform: translateY(1px);
+}
+
+.roll-btn,
+.box {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
 }
