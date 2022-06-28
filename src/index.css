@@ -15,11 +15,10 @@ body,
 }
 
 #root {
-  /* background-color: #e5e5e5; */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Karla', sans-serif;
 }
 
 main {
@@ -36,6 +35,7 @@ main {
 
 .game-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #f5f5f5;
@@ -46,7 +46,7 @@ main {
 
 .die-container {
   display: grid;
-  grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+  grid-template: auto auto / repeat(5, 1fr);
   gap: 30px;
 }
 
@@ -62,4 +62,20 @@ main {
   width: 63px;
   box-shadow: 0px 2px 2px 0px #00000026;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.roll-btn {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #5035ff;
+  font-size: 23px;
+  font-weight: 700;
+  width: 150px;
+  height: 60px;
+  border-radius: 5px;
+  cursor: pointer;
 }
