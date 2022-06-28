@@ -1,9 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Die from './components/Die';
 import { nanoid } from 'nanoid';
+import Confetti from 'react-confetti';
 
 function App() {
   const [dices, setDices] = useState(allNewDice());
+  const [isFinish, setIsFinish] = useState(false);
+
+  useEffect(() => {
+    const winCondition = dices.every(
+      (dice) => dice.value === dices[0].value && dice.isHeld
+    );
+    if (winCondition) {
+      setIsFinish(true);
+      console.log('you win the god damn game, man!');
+    }
+  }, [dices]);
 
   function generateDice() {
     return {
@@ -31,9 +43,14 @@ function App() {
   ));
 
   function rollDice() {
-    setDices((oldDices) =>
-      oldDices.map((dice, index) => (dice.isHeld ? dice : generateDice()))
-    );
+    if (isFinish) {
+      setDices(allNewDice());
+      setIsFinish(false);
+    } else {
+      setDices((oldDices) =>
+        oldDices.map((dice) => (dice.isHeld ? dice : generateDice()))
+      );
+    }
   }
 
   function toggleHold(id) {
@@ -46,6 +63,7 @@ function App() {
 
   return (
     <main>
+      {isFinish && <Confetti />}
       <div className='game-container'>
         <h1 className='title'>Tenzies</h1>
         <p className='instruction'>
@@ -54,7 +72,7 @@ function App() {
         </p>
         <div className='die-container'>{diceElement}</div>
         <div className='roll-btn' onClick={rollDice}>
-          Roll Dice
+          {isFinish ? 'New Game' : 'Roll Dice'}
         </div>
       </div>
     </main>
