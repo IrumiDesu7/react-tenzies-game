@@ -5,16 +5,16 @@ function App() {
     <main>
       <div className='game-container'>
         <div className='die-container'>
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
-          <Die />
+          <Die value={3} />
+          <Die value={1} />
+          <Die value={2} />
+          <Die value={5} />
+          <Die value={5} />
+          <Die value={6} />
+          <Die value={4} />
+          <Die value={1} />
+          <Die value={2} />
+          <Die value={6} />
         </div>
       </div>
     </main>

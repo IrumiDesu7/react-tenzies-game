@@ -35,6 +35,9 @@ main {
 }
 
 .game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f5f5f5;
   width: 520px;
   height: 520px;
@@ -43,8 +46,8 @@ main {
 
 .die-container {
   display: grid;
-  grid-template: repeat(2, 1fr) / repeat(5, 50px);
-  gap: 20px;
+  grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+  gap: 30px;
 }
 
 .box {
@@ -55,8 +58,8 @@ main {
   font-weight: 700;
   font-family: 'Karla', sans-serif;
   background-color: white;
-  height: 50px;
-  width: 50px;
+  height: 63px;
+  width: 63px;
   box-shadow: 0px 2px 2px 0px #00000026;
   border-radius: 4px;
 }
