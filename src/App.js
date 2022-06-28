@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import Die from './components/Die';
+import Main from './components/Main';
+import Stats from './components/Stats';
 import { nanoid } from 'nanoid';
-import Confetti from 'react-confetti';
 
 function App() {
   const [dices, setDices] = useState(allNewDice());
@@ -13,7 +14,6 @@ function App() {
     );
     if (winCondition) {
       setIsFinish(true);
-      console.log('you win the god damn game, man!');
     }
   }, [dices]);
 
@@ -62,20 +62,10 @@ function App() {
   }
 
   return (
-    <main>
-      {isFinish && <Confetti />}
-      <div className='game-container'>
-        <h1 className='title'>Tenzies</h1>
-        <p className='instruction'>
-          Roll until all dice are the same. Click each die to freeze it at its
-          current value between rolls.
-        </p>
-        <div className='die-container'>{diceElement}</div>
-        <div className='roll-btn' onClick={rollDice}>
-          {isFinish ? 'New Game' : 'Roll Dice'}
-        </div>
-      </div>
-    </main>
+    <div className='parent-container'>
+      <Main isFinish={isFinish} diceElement={diceElement} rollDice={rollDice} />
+      <Stats />
+    </div>
   );
 }
 
