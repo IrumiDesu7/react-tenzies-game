@@ -36,7 +36,7 @@ main {
 .game-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: #f5f5f5;
   width: 520px;
@@ -66,7 +66,7 @@ main {
 }
 
 .roll-btn {
-  margin-top: 30px;
+  /* margin-top: 30px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,4 +78,18 @@ main {
   height: 60px;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0px 3.1999998092651367px 7.679999828338623px 0px #0000002e;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+}
+.roll-btn:focus {
+  outline: none;
+}
+.roll-btn:active {
+  box-shadow: inset 26px 35px 25px -4px rgba(0, 0, 0, 0.1);
+  background-color: #4029d8;
+  transform: translateY(1px);
 }
