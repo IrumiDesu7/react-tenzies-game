@@ -7,8 +7,11 @@ import { nanoid } from 'nanoid';
 function App() {
   const [dices, setDices] = useState(allNewDice());
   const [isFinish, setIsFinish] = useState(false);
+  const [rollAmount, setRollAmount] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
+    /* Checking if all the dice have the same value and are held. */
     const winCondition = dices.every(
       (dice) => dice.value === dices[0].value && dice.isHeld
     );
@@ -16,6 +19,18 @@ function App() {
       setIsFinish(true);
     }
   }, [dices]);
+
+  useEffect(() => {
+    if (isFinish) {
+      console.log('paused');
+    } else {
+      const timer = setInterval(
+        () => setDuration((second) => second + 1),
+        1000
+      );
+      return () => clearInterval(timer);
+    }
+  }, [isFinish]);
 
   function generateDice() {
     return {
@@ -46,10 +61,12 @@ function App() {
     if (isFinish) {
       setDices(allNewDice());
       setIsFinish(false);
+      setRollAmount(0);
     } else {
       setDices((oldDices) =>
         oldDices.map((dice) => (dice.isHeld ? dice : generateDice()))
       );
+      setRollAmount((oldAmount) => oldAmount + 1);
     }
   }
 
@@ -64,7 +81,7 @@ function App() {
   return (
     <div className='parent-container'>
       <Main isFinish={isFinish} diceElement={diceElement} rollDice={rollDice} />
-      <Stats />
+      <Stats rollAmount={rollAmount} duration={duration} />
     </div>
   );
 }

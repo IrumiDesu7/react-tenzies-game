@@ -109,3 +109,15 @@ main {
   letter-spacing: -0.03em;
   text-align: center;
 }
+
+/* Stats */
+footer {
+  display: grid;
+  grid-template: repeat(3, auto) / 0.7fr 1fr;
+  margin-top: 10px;
+  gap: 0.2rem;
+}
+
+.stats-title {
+  grid-column: 1/-1;
+}
