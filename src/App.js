@@ -9,6 +9,9 @@ function App() {
   const [isFinish, setIsFinish] = useState(false);
   const [rollAmount, setRollAmount] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [fastestDuration, setFastestDuration] = useState(
+    () => localStorage.getItem('fastest') || 60
+  );
 
   useEffect(() => {
     /* Checking if all the dice have the same value and are held. */
@@ -22,19 +25,21 @@ function App() {
 
   useEffect(() => {
     if (!isFinish) {
-      console.log('falsy runs');
       const timer = setInterval(
         () => setDuration((oldDuration) => oldDuration + 1),
         1000
       );
       return () => {
-        console.log('cleanup runs');
         clearInterval(timer);
       };
     } else {
       setDuration((oldDuration) => oldDuration);
+      duration < fastestDuration
+        ? setFastestDuration(duration)
+        : setFastestDuration((oldDuration) => oldDuration);
+      localStorage.setItem('fastest', JSON.stringify(fastestDuration));
     }
-  }, [isFinish]);
+  }, [isFinish, duration, fastestDuration]);
 
   function generateDice() {
     return {
@@ -86,7 +91,11 @@ function App() {
   return (
     <div className='parent-container'>
       <Main isFinish={isFinish} diceElement={diceElement} rollDice={rollDice} />
-      <Stats rollAmount={rollAmount} duration={duration} />
+      <Stats
+        rollAmount={rollAmount}
+        duration={duration}
+        fastestDuration={fastestDuration}
+      />
     </div>
   );
 }

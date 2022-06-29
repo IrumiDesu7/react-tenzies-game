@@ -7,7 +7,14 @@ export default function Stats(props) {
         : {props.rollAmount} {props.rollAmount > 1 ? 'rolls' : 'roll'}
       </p>
       <h3>The time it took to win</h3>
-      <p>: {props.duration} seconds</p>
+      <p>
+        : {props.duration} {props.duration > 1 ? 'seconds' : 'second'}
+      </p>
+      <h3>Fastest winner time</h3>
+      <p>
+        : {props.fastestDuration}{' '}
+        {props.fastestDuration > 1 ? 'seconds' : 'second'}
+      </p>
     </footer>
   );
 }
