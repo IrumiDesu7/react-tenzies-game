@@ -24,7 +24,7 @@ function App() {
     if (!isFinish) {
       console.log('falsy runs');
       const timer = setInterval(
-        () => setDuration((second) => second + 1),
+        () => setDuration((oldDuration) => oldDuration + 1),
         1000
       );
       return () => {
@@ -32,7 +32,7 @@ function App() {
         clearInterval(timer);
       };
     } else {
-      console.log('truthy runs');
+      setDuration((oldDuration) => oldDuration);
     }
   }, [isFinish]);
 
@@ -66,6 +66,7 @@ function App() {
       setDices(allNewDice());
       setIsFinish(false);
       setRollAmount(0);
+      setDuration(0);
     } else {
       setDices((oldDices) =>
         oldDices.map((dice) => (dice.isHeld ? dice : generateDice()))
