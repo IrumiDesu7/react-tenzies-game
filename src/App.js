@@ -21,14 +21,18 @@ function App() {
   }, [dices]);
 
   useEffect(() => {
-    if (isFinish) {
-      console.log('paused');
-    } else {
+    if (!isFinish) {
+      console.log('falsy runs');
       const timer = setInterval(
         () => setDuration((second) => second + 1),
         1000
       );
-      return () => clearInterval(timer);
+      return () => {
+        console.log('cleanup runs');
+        clearInterval(timer);
+      };
+    } else {
+      console.log('truthy runs');
     }
   }, [isFinish]);
 
